@@ -2,22 +2,12 @@
 
 namespace Glypto
 {
-    Logger::Logger()
-    {
-        if(SDL_Init(SDL_INIT_VIDEO) != 0)
-        {
-            exit(-1);
-        }
-    }
+    std::shared_ptr<spdlog::logger> Logger::s_CoreLogger;
 
-    // ESC[background_colour;Text_colourm output ESC[m”
-    void Logger::Output()
+    void Logger::InitializeLogger()
     {
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "\033[31;49m Hello, world!\033[m");
-    }
-
-    Logger::~Logger()
-    {
-        SDL_Quit();
+        spdlog::set_pattern("%^[%T] %n: %v%$");
+        s_CoreLogger = spdlog::stdout_color_mt("GLYPTO");
+        s_CoreLogger->set_level(spdlog::level::trace);
     }
 }

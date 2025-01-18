@@ -1,4 +1,4 @@
-add_executable(Testbed "src/main.cpp")
+add_executable(Testbed "src/TestbedClient.cpp")
 target_include_directories(Testbed PRIVATE ${CMAKE_SOURCE_DIR}/Glypto/src)
 target_link_libraries(Testbed PRIVATE Glypto)
 
