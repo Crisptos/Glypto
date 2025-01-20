@@ -1,4 +1,6 @@
 #pragma once
+#include "SDL2/SDL.h"
+#include "GlyptoCore/InputManager.h"
 #include "GlyptoCore/Core.h"
 #include "GlyptoCore/Logger.h"
 

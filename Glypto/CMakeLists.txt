@@ -12,7 +12,11 @@ add_library(Glypto
   ${SRC_DIR}/GlyptoCore/Logger.h  
   ${SRC_DIR}/GlyptoCore/Logger.cpp
   ${SRC_DIR}/GlyptoCore/Application.h
-  ${SRC_DIR}/GlyptoCore/Application.cpp   
+  ${SRC_DIR}/GlyptoCore/Application.cpp
+  ${SRC_DIR}/GlyptoCore/EventObserver.h 
+  ${SRC_DIR}/GlyptoCore/EventSubject.h 
+  ${SRC_DIR}/GlyptoCore/InputManager.h 
+  ${SRC_DIR}/GlyptoCore/InputManager.cpp    
 )
 
 target_include_directories(Glypto 
