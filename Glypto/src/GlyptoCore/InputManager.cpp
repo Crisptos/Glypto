@@ -2,42 +2,33 @@
 
 namespace Glypto
 {
-    Input InputManager::s_Input;
-
-    void InputManager::InitializeInputManager()
+    InputManager::InputManager()
     {
-        s_Input.current_keystate = SDL_GetKeyboardState(&s_Input.key_array_size);
-        if(!s_Input.key_array_size)
+        m_Input.current_keystate = SDL_GetKeyboardState(&m_Input.key_array_size);
+        if(!m_Input.key_array_size)
         {
             Logger::GLYPTO_CRITICAL("Unable to retrieve key array size from SDL!");
             exit(-1);
         }
 
-        s_Input.prev_keystate = (Uint8*)calloc(s_Input.key_array_size, sizeof(Uint8));
+        m_Input.prev_keystate = (Uint8*)calloc(m_Input.key_array_size, sizeof(Uint8));
     }
 
     InputManager::~InputManager()
     {
-        free((Uint8*)s_Input.prev_keystate);
+        free((Uint8*)m_Input.prev_keystate);
     }
 
     void InputManager::UpdatePrevState()
     {
-        std::memcpy(const_cast<Uint8*>(s_Input.prev_keystate), s_Input.current_keystate, sizeof(s_Input.key_array_size));
+        std::memcpy(const_cast<Uint8*>(m_Input.prev_keystate), m_Input.current_keystate, sizeof(m_Input.key_array_size));
     }
 
-    void InputManager::AddObserver(EventObserver *observer)
+    void InputManager::NotifyAll(Event e)
     {
-
-    }
-
-    void InputManager::RemoveObserver(EventObserver *observer) 
-    {
-
-    }
-
-    void InputManager::NotifyAll()
-    {
-
+        for(EventObserver* observer : m_Observers)
+        {
+            observer->OnNotify(e);
+        }
     }
 }

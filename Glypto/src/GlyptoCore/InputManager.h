@@ -3,7 +3,7 @@
 #include <memory>
 #include "SDL2/SDL.h"
 #include "GlyptoCore/Logger.h"
-#include "GlyptoCore/EventSubject.h"
+#include "GlyptoCore/Event.h"
 
 namespace Glypto
 {
@@ -17,18 +17,16 @@ namespace Glypto
     class GLYPTO_API InputManager : public EventSubject
     {
     public:
-        static void InitializeInputManager(); // SDL must be initialized before Input!
+        InputManager();
         ~InputManager();
 
-        static Input* GetInputState() {return &s_Input; };
-        static void UpdatePrevState();
+        void UpdatePrevState();
 
         // EventSubject overridable functions
-        void AddObserver(EventObserver *observer) override;
-        void RemoveObserver(EventObserver *observer) override;
-        void NotifyAll() override;
+        void NotifyAll(Event e) override;
+
+        Input m_Input;
 
     private:
-        static Input s_Input;
     };
 }

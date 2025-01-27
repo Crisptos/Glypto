@@ -8,7 +8,6 @@ int main(int argc, char** argv)
 {
     Glypto::Application* client_app = CreateApplication();
     Glypto::Logger::InitializeLogger();
-    Glypto::InputManager::InitializeInputManager();
     client_app->Run();
     delete client_app;
     return 0;

@@ -3,17 +3,25 @@
 #include "GlyptoCore/InputManager.h"
 #include "GlyptoCore/Core.h"
 #include "GlyptoCore/Logger.h"
+#include "GlyptoCore/Event.h"
 
 namespace Glypto
 {
-    class GLYPTO_API Application
+    class GLYPTO_API Application : public EventObserver
     {
     public:
         Application();
         virtual ~Application();
 
         void Run();
+
+        // Observer overridables
+        void OnNotify(Event e) override;
+
     private:
+        bool m_IsRunning = true;
+        bool m_IsMinimized = false;
+        InputManager m_InputManager;
 
     };
 }
