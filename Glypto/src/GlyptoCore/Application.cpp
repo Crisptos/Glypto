@@ -47,5 +47,20 @@ namespace Glypto
         {
             Logger::GLYPTO_INFO("Key %c was released...", event.keycode);
         }
+
+        if(event.type == EVENT_INPUT_MOUSE_BTNDOWN)
+        {
+            Logger::GLYPTO_INFO("Mouse Btn %d was pressed...", event.mouse_btn);
+        }
+
+        if(event.type == EVENT_INPUT_MOUSE_BTNUP)
+        {
+            Logger::GLYPTO_INFO("Mouse Btn %d was released...", event.mouse_btn);
+        }
+
+        if(event.type == EVENT_INPUT_MOUSE_MOTION)
+        {
+            Logger::GLYPTO_INFO("Mouse Pos is (X: %d, Y: %d)...", event.mouse_pos[0], event.mouse_pos[1]);
+        }
     }
 }

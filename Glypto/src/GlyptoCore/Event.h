@@ -8,14 +8,19 @@ namespace Glypto
         EVENT_APPLICATION_QUIT = 0x0,
         EVENT_INPUT_KEYDOWN,
         EVENT_INPUT_KEYUP,
+        EVENT_INPUT_MOUSE_BTNDOWN,
+        EVENT_INPUT_MOUSE_BTNUP,
+        EVENT_INPUT_MOUSE_MOTION
     } EventType; 
 
     typedef struct Event
     {
         EventType type;
         union
-        {   
+        {
             int32_t keycode; 
+            int32_t mouse_pos[2];   
+            uint8_t mouse_btn;
         };
     } Event;
 
