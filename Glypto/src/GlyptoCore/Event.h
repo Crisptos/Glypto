@@ -5,21 +5,25 @@ namespace Glypto
 {
     typedef enum EventType
     {
-        APPLICATION_QUIT = 0x0,
-        INPUT_KEYDOWN,
-        INPUT_KEYUP,
+        EVENT_APPLICATION_QUIT = 0x0,
+        EVENT_INPUT_KEYDOWN,
+        EVENT_INPUT_KEYUP,
     } EventType; 
 
     typedef struct Event
     {
-        EventType event_type;
+        EventType type;
+        union
+        {   
+            int32_t keycode; 
+        };
     } Event;
 
     class EventObserver
     {
     public:
         virtual ~EventObserver() {};
-        virtual void OnNotify(Event e) = 0;
+        virtual void OnNotify(Event event) = 0;
     };
 
     class EventSubject
@@ -37,7 +41,7 @@ namespace Glypto
             m_Observers.remove(observer);
         }
 
-        virtual void NotifyAll(Event e)
+        virtual void NotifyAll(Event event)
         {
             
         }

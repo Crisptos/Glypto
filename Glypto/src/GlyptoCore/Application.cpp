@@ -20,19 +20,32 @@ namespace Glypto
 
     void Application::Run()
     {
-        Logger::GLYPTO_DEBUG("Key Array Size: %d", m_InputManager.m_Input.key_array_size);
+        // TODO - Used only for testing the input. Window will be handled after
+        SDL_Window* window;
+        SDL_CreateWindow("TEST", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, NULL);
         while(m_IsRunning)
         {
-            m_InputManager.NotifyAll({APPLICATION_QUIT});
+            m_InputManager.ProcessInput();
+            m_InputManager.UpdatePrevState();
         }
     }
 
-    void Application::OnNotify(Event e)
+    void Application::OnNotify(Event event)
     {
-        if(e.event_type == APPLICATION_QUIT)
+        if(event.type == EVENT_APPLICATION_QUIT)
         {
             Logger::GLYPTO_INFO("Quitting application...");
             m_IsRunning = false;
+        }
+
+        if(event.type == EVENT_INPUT_KEYDOWN)
+        {
+            Logger::GLYPTO_INFO("Key %c was pressed...", event.keycode);
+        }
+
+        if(event.type == EVENT_INPUT_KEYUP)
+        {
+            Logger::GLYPTO_INFO("Key %c was released...", event.keycode);
         }
     }
 }

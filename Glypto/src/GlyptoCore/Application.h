@@ -16,7 +16,7 @@ namespace Glypto
         void Run();
 
         // Observer overridables
-        void OnNotify(Event e) override;
+        void OnNotify(Event event) override;
 
     private:
         bool m_IsRunning = true;

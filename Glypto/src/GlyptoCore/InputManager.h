@@ -9,24 +9,26 @@ namespace Glypto
 {
     typedef struct Input
     {
-        const Uint8* current_keystate;
-        const Uint8* prev_keystate;
-        int key_array_size;
+        uint8_t current_keystate[SDL_NUM_SCANCODES];
+        uint8_t prev_keystate[SDL_NUM_SCANCODES];
     } Input;
 
     class GLYPTO_API InputManager : public EventSubject
     {
     public:
-        InputManager();
-        ~InputManager();
+        InputManager() {};
+        ~InputManager() {};
 
+        void ProcessInput();
         void UpdatePrevState();
 
         // EventSubject overridable functions
-        void NotifyAll(Event e) override;
-
-        Input m_Input;
+        void NotifyAll(Event event) override;
 
     private:
+        void ProcessInputKeys(SDL_Keycode keycode, uint8_t is_keydown);
+        void ProcessInputMouseButtons();
+        void ProcessInputMousePosition();
+        static Input s_Input;
     };
 }
