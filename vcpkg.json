@@ -1,0 +1,10 @@
+{
+    "name": "glypto",
+    "version-string": "1.0.0",
+    "dependencies": [
+      { "name": "sdl2", "version>=": "2.30.11" },
+      "spdlog"
+    ],
+    "builtin-baseline": "01be99fec01f777c4113ceea192a45115c69cdb7"
+  }
+  

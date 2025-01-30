@@ -1,5 +1,6 @@
 # Directories
 .vscode/
 build/
+vcpkg_installed/
 
 # Files
