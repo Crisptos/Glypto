@@ -4,12 +4,11 @@ class Testbed : public Glypto::Application
 {
 
 public:
-    Testbed() {}
+    using Application::Application;
     ~Testbed() {}
-
 };
 
-Glypto::Application* CreateApplication()
+Glypto::Application *CreateApplication()
 {
-    return new Testbed();
+    return new Testbed("Glypto App", 800, 600);
 }

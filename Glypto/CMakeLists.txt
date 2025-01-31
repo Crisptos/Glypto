@@ -16,7 +16,9 @@ add_library(Glypto
   ${SRC_DIR}/GlyptoCore/Application.cpp
   ${SRC_DIR}/GlyptoCore/Event.h 
   ${SRC_DIR}/GlyptoCore/InputManager.h 
-  ${SRC_DIR}/GlyptoCore/InputManager.cpp    
+  ${SRC_DIR}/GlyptoCore/InputManager.cpp
+  ${SRC_DIR}/GlyptoCore/Platform.h
+  ${SRC_DIR}/GlyptoCore/Platform.cpp  
 )
 
 target_include_directories(Glypto 
