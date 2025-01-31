@@ -6,6 +6,7 @@ namespace Glypto
     typedef enum EventType
     {
         EVENT_APPLICATION_QUIT = 0x0,
+        EVENT_APPLICATION_RESIZE_WINDOW,
         EVENT_INPUT_KEYDOWN,
         EVENT_INPUT_KEYUP,
         EVENT_INPUT_MOUSE_BTNDOWN,

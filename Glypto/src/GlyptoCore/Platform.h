@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+#include "glad/glad.h"
 #include "SDL2/SDL.h"
 #include "GlyptoCore/Core.h"
 #include "GlyptoCore/Logger.h"
@@ -24,5 +25,6 @@ namespace Glypto
         SDL_Window *m_Window;
         PlatformProps m_Props;
         // TODO - Render Context
+        SDL_GLContext m_ContextGL; // TODO - hardcoded for now
     };
 }
