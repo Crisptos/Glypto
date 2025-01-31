@@ -2,7 +2,7 @@
 
 namespace Glypto
 {
-    Application::Application(const char* name, uint16_t width, uint16_t height)
+    Application::Application(const char *name, uint16_t width, uint16_t height)
     {
         // Subsystem initialization
         m_Platform.InitializePlatform(name, width, height);
@@ -19,10 +19,15 @@ namespace Glypto
 
     void Application::Run()
     {
+        // TODO - Systems will be updated based on a layer system
         while (m_IsRunning)
         {
-            m_InputManager.ProcessInput();
-            m_InputManager.UpdatePrevState();
+            if (!m_IsMinimized)
+            {
+                m_InputManager.ProcessInput();
+                m_InputManager.UpdatePrevState();
+                m_Platform.UpdateWindowBuffers();
+            }
         }
     }
 

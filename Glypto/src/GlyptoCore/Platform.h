@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 
-#include "glad/glad.h"
 #include "SDL2/SDL.h"
 #include "GlyptoCore/Core.h"
 #include "GlyptoCore/Logger.h"
+#include "GlyptoCore/Renderer/OpenGL/OpenGLContext.h"
 
 namespace Glypto
 {
@@ -20,11 +20,13 @@ namespace Glypto
     public:
         void InitializePlatform(const char* name, uint16_t width, uint16_t height);
         void DestroyPlatform();
+        
+        void UpdateWindowBuffers();
 
     private:
         SDL_Window *m_Window;
         PlatformProps m_Props;
-        // TODO - Render Context
-        SDL_GLContext m_ContextGL; // TODO - hardcoded for now
+        // TODO - Renderer context is encapsulated in a class, still need to work on this so hardcoded for now
+        std::unique_ptr<GraphicsContext> m_GraphicsContext;
     };
 }

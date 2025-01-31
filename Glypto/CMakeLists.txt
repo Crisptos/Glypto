@@ -18,7 +18,10 @@ add_library(Glypto
   ${SRC_DIR}/GlyptoCore/InputManager.h 
   ${SRC_DIR}/GlyptoCore/InputManager.cpp
   ${SRC_DIR}/GlyptoCore/Platform.h
-  ${SRC_DIR}/GlyptoCore/Platform.cpp  
+  ${SRC_DIR}/GlyptoCore/Platform.cpp
+  ${SRC_DIR}/GlyptoCore/Renderer/GraphicsContext.h
+  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.h 
+  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.cpp 
 )
 
 target_include_directories(Glypto 
