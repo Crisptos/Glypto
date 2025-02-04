@@ -1,6 +1,6 @@
 #pragma once
-
 #include <stdint.h>
+#include "GlyptoCore/Renderer/Buffer.h"
 
 namespace Glypto
 {
@@ -14,6 +14,7 @@ namespace Glypto
     {
     public:
         static RendererBackendAPI GetRendererBackendAPI() { return s_RendererBackendAPI; }
+        
 
     private:
         static RendererBackendAPI s_RendererBackendAPI;

@@ -40,10 +40,6 @@ namespace Glypto
 
     void OpenGLContext::SwapWindowBuffers()
     {
-        // TODO - TEST ONLY
-        glClearColor(0.45f, 0.34, 0.54f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        // TODO - TEST ONLY
         SDL_GL_SwapWindow(m_WindowHandle);
     }
 }

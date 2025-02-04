@@ -5,7 +5,7 @@ namespace Glypto
     // VBO
     OpenGLVertexBuffer::OpenGLVertexBuffer(float *vertices, uint32_t size)
     {
-        glGenBuffers(1, &m_RendererID);
+        glCreateBuffers(1, &m_RendererID);
         glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
         glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
     }
@@ -28,7 +28,7 @@ namespace Glypto
     // IBO
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t *indices, uint32_t size)
     {
-        glGenBuffers(1, &m_RendererID);
+        glCreateBuffers(1, &m_RendererID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
     }

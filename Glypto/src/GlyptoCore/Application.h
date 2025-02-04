@@ -5,6 +5,7 @@
 #include "GlyptoCore/Core.h"
 #include "GlyptoCore/Logger.h"
 #include "GlyptoCore/Event.h"
+#include "GlyptoCore/Renderer/Renderer.h"
 
 namespace Glypto
 {
@@ -24,6 +25,7 @@ namespace Glypto
         uint8_t m_IsMinimized = SDL_FALSE;
         InputManager m_InputManager;
         Platform m_Platform;
+        VertexBuffer* test;
     };
 }
 
