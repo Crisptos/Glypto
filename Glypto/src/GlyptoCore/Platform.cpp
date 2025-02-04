@@ -26,7 +26,6 @@ namespace Glypto
 
         // Hardcoded OpenGL context for now
         m_GraphicsContext = std::make_unique<OpenGLContext>(m_Window);
-
         m_GraphicsContext->InitializeContext();
 
         // Copy and save props

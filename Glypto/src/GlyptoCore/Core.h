@@ -7,5 +7,5 @@
 		#define GLYPTO_API __declspec(dllimport)
 	#endif
 #else
-	#error Crisp only supports Windows at the moment
+	#error Glypto does not support the current platform detected
 #endif

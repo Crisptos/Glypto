@@ -23,7 +23,6 @@ add_library(Glypto
   ${SRC_DIR}/GlyptoCore/Renderer/Renderer.cpp
   ${SRC_DIR}/GlyptoCore/Renderer/Buffer.h
   ${SRC_DIR}/GlyptoCore/Renderer/Buffer.cpp
-  ${SRC_DIR}/GlyptoCore/Renderer/Texture.h
   ${SRC_DIR}/GlyptoCore/Renderer/GraphicsContext.h
   ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.h 
   ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.cpp 

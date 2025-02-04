@@ -26,8 +26,13 @@ namespace Glypto
             0.5f, -0.5f, 0.0f,
             0.0f, 0.5f, 0.0f
         };
+        uint32_t testvao;
+        glGenVertexArrays(1, &testvao);
+        glBindVertexArray(testvao);
         test = VertexBuffer::Create(vertices, sizeof(vertices));
         test->Bind();
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, NULL, 3 * sizeof(float), 0);
         // TEST CODE ONLY
 
         // TODO - Systems will be updated based on a layer system
