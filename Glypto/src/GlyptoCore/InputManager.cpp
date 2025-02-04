@@ -14,7 +14,7 @@ namespace Glypto
                 case SDL_QUIT:
                 {
                     Event event;
-                    event.type = EVENT_APPLICATION_QUIT;
+                    event.type = EventType::EVENT_APPLICATION_QUIT;
                     NotifyAll(event);
                     break;
                 }
@@ -64,7 +64,7 @@ namespace Glypto
             s_Input.current_keystate[keycode] = is_keydown;
 
             Event event;
-            event.type = is_keydown ? EVENT_INPUT_KEYDOWN : EVENT_INPUT_KEYUP;
+            event.type = is_keydown ? EventType::EVENT_INPUT_KEYDOWN : EventType::EVENT_INPUT_KEYUP;
             event.keycode = keycode;
             NotifyAll(event);
         }
@@ -80,7 +80,7 @@ namespace Glypto
             s_Input.current_mousebtn_state[mouse_btn] = is_btn_down;
 
             Event event;
-            event.type = is_btn_down ? EVENT_INPUT_MOUSE_BTNDOWN : EVENT_INPUT_MOUSE_BTNUP;
+            event.type = is_btn_down ? EventType::EVENT_INPUT_MOUSE_BTNDOWN : EventType::EVENT_INPUT_MOUSE_BTNUP;
             event.mouse_btn = mouse_btn;
             NotifyAll(event);
         }
@@ -94,7 +94,7 @@ namespace Glypto
             s_Input.current_mouse_y = mouse_y;
 
             Event event;
-            event.type = EVENT_INPUT_MOUSE_MOTION;
+            event.type = EventType::EVENT_INPUT_MOUSE_MOTION;
             event.mouse_pos[0] = mouse_x;
             event.mouse_pos[1] = mouse_y;
             NotifyAll(event);
@@ -109,13 +109,5 @@ namespace Glypto
 
         s_Input.prev_mouse_x = s_Input.current_mouse_x;
         s_Input.prev_mouse_y = s_Input.current_mouse_y;
-    }
-
-    void InputManager::NotifyAll(Event event)
-    {
-        for(EventObserver* observer : m_Observers)
-        {
-            observer->OnNotify(event);
-        }
     }
 }

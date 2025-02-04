@@ -31,37 +31,52 @@ namespace Glypto
         }
     }
 
-    void Application::OnNotify(Event event)
+    void Application::OnNotify(Event &event)
     {
-        if (event.type == EVENT_APPLICATION_QUIT)
+        switch (event.type)
         {
-            Logger::GLYPTO_INFO("Quitting application...");
-            m_IsRunning = false;
-        }
+            case EventType::EVENT_APPLICATION_QUIT:
+            {
+                Logger::GLYPTO_INFO("Quitting application...");
+                m_IsRunning = SDL_FALSE;
+                event.handled = SDL_TRUE;
+                break;
+            }
 
-        if (event.type == EVENT_INPUT_KEYDOWN)
-        {
-            Logger::GLYPTO_INFO("Key %c was pressed...", event.keycode);
-        }
+            case EventType::EVENT_INPUT_KEYDOWN:
+            {
+                Logger::GLYPTO_INFO("Key %c was pressed...", event.keycode);
+                event.handled = SDL_TRUE;
+                break;
+            }
 
-        if (event.type == EVENT_INPUT_KEYUP)
-        {
-            Logger::GLYPTO_INFO("Key %c was released...", event.keycode);
-        }
+            case EventType::EVENT_INPUT_KEYUP:
+            {
+                Logger::GLYPTO_INFO("Key %c was released...", event.keycode);
+                event.handled = SDL_TRUE;
+                break;
+            }
 
-        if (event.type == EVENT_INPUT_MOUSE_BTNDOWN)
-        {
-            Logger::GLYPTO_INFO("Mouse Btn %d was pressed...", event.mouse_btn);
-        }
+            case EventType::EVENT_INPUT_MOUSE_BTNDOWN:
+            {
+                Logger::GLYPTO_INFO("Mouse Btn %d was pressed...", event.mouse_btn);
+                event.handled = SDL_TRUE;
+                break;
+            }
 
-        if (event.type == EVENT_INPUT_MOUSE_BTNUP)
-        {
-            Logger::GLYPTO_INFO("Mouse Btn %d was released...", event.mouse_btn);
-        }
+            case EventType::EVENT_INPUT_MOUSE_BTNUP:
+            {
+                Logger::GLYPTO_INFO("Mouse Btn %d was released...", event.mouse_btn);
+                event.handled = SDL_TRUE;
+                break;
+            }
 
-        if (event.type == EVENT_INPUT_MOUSE_MOTION)
-        {
-            Logger::GLYPTO_INFO("Mouse Pos is (X: %d, Y: %d)...", event.mouse_pos[0], event.mouse_pos[1]);
+            case EventType::EVENT_INPUT_MOUSE_MOTION:
+            {
+                Logger::GLYPTO_INFO("Mouse Pos is (X: %d, Y: %d)...", event.mouse_pos[0], event.mouse_pos[1]);
+                event.handled = SDL_TRUE;
+                break;
+            }
         }
     }
 }

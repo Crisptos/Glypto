@@ -30,9 +30,6 @@ namespace Glypto
         void ProcessInput();
         void UpdatePrevState();
 
-        // EventSubject overridable functions
-        void NotifyAll(Event event) override;
-
     private:
         void ProcessInputKeys(SDL_Keycode keycode, uint8_t is_keydown);
         void ProcessInputMouseButtons(uint8_t mouse_btn, uint8_t is_btn_down);

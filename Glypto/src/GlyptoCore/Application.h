@@ -17,11 +17,11 @@ namespace Glypto
         void Run();
 
         // Observer overridables
-        void OnNotify(Event event) override;
+        void OnNotify(Event& event) override;
 
     private:
-        bool m_IsRunning = true;
-        bool m_IsMinimized = false;
+        uint8_t m_IsRunning = SDL_TRUE;
+        uint8_t m_IsMinimized = SDL_FALSE;
         InputManager m_InputManager;
         Platform m_Platform;
     };
