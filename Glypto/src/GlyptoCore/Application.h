@@ -26,6 +26,7 @@ namespace Glypto
         InputManager m_InputManager;
         Platform m_Platform;
         std::shared_ptr<VertexBuffer> test_vbo;
+        std::shared_ptr<IndexBuffer> test_ibo;
         std::unique_ptr<VertexArray> test_vao;
     };
 }

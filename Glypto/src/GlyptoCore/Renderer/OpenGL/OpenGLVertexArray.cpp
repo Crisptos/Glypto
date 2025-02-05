@@ -1,5 +1,4 @@
 #include "GlyptoCore/Renderer/OpenGL/OpenGLVertexArray.h"
-
 namespace Glypto
 {
     void OpenGLVertexArray::Bind() const
@@ -27,8 +26,8 @@ namespace Glypto
                 CountOfShaderDataType(element.data_type),
                 GL_FLOAT,
                 element.normalized,
-                element.size,
-                (const void *)element.offset);
+                vbo_layout.GetStride(),
+                (void*)element.offset);
             location++;
         }
 

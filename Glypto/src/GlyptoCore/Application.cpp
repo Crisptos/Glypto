@@ -22,33 +22,49 @@ namespace Glypto
         // TEST CODE ONLY
         glViewport(0, 0, 800, 600);
         float vertices[] = {
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.0f, 0.5f, 0.0f};
+            // POS            // COLOR
+            -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+            0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
+            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f
+        };
+
+        uint32_t indices[] = {
+            0, 1, 3,
+            3, 1, 2};
 
         const char *vertexShaderSource = "#version 330 core\n"
-                                         "layout (location = 0) in vec3 aPos;\n"
+                                         "layout (location = 0) in vec3 a_pos;\n"
+                                         "layout (location = 1) in vec3 a_color;\n"
+                                         "out vec4 vert_color;\n"
                                          "void main()\n"
                                          "{\n"
-                                         "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                                         "   gl_Position = vec4(a_pos.x, a_pos.y, a_pos.z, 1.0);\n"
+                                         "   vert_color = vec4(a_color, 1.0f);\n"
                                          "}\0";
+
         const char *fragmentShaderSource = "#version 330 core\n"
-                                           "out vec4 FragColor;\n"
+                                           "in vec4 vert_color;\n"
+                                           "out vec4 frag_color;\n"
                                            "void main()\n"
                                            "{\n"
-                                           "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+                                           "   frag_color = vert_color;\n"
                                            "}\n\0";
 
         Shader test(vertexShaderSource, fragmentShaderSource);
         test.Bind();
 
-        BufferLayout test_layout = {{"a_pos",
-                                     ShaderDataType::FLOAT3}};
+        BufferLayout test_layout = {
+            {"a_pos", ShaderDataType::FLOAT3},
+            {"a_color", ShaderDataType::FLOAT3}
+        };
 
-        test_vbo.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
         test_vao.reset(VertexArray::Create());
         test_vao->Bind();
+        test_vbo.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+        test_ibo.reset(IndexBuffer::Create(indices, sizeof(indices)));
         test_vbo->SetLayout(test_layout);
+        test_vao->SetIndexBuffer(test_ibo);
         test_vao->AddVertexBuffer(test_vbo);
 
         // TEST CODE ONLY
@@ -60,7 +76,7 @@ namespace Glypto
             {
                 glClearColor(0.23f, 0.23f, 0.23f, 1.0f);
                 glClear(GL_COLOR_BUFFER_BIT);
-                glDrawArrays(GL_TRIANGLES, 0, 3);
+                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
                 m_InputManager.ProcessInput();
                 m_InputManager.UpdatePrevState();
                 m_Platform.UpdateWindowBuffers();

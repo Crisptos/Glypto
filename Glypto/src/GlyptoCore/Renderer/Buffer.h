@@ -104,7 +104,7 @@ namespace Glypto
         {
             uint32_t offset = 0;
             m_Stride = 0;
-            for (BufferElement element : m_Elements)
+            for (BufferElement& element : m_Elements)
             {
                 element.offset = offset;
                 offset += element.size;
@@ -112,6 +112,7 @@ namespace Glypto
             }
         }
         inline const std::vector<BufferElement> &GetElements() const { return m_Elements; }
+        inline const uint32_t &GetStride() const { return m_Stride; }
 
     private:
         uint32_t m_Stride;
