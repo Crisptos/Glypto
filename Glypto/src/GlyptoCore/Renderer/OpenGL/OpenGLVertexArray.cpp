@@ -17,9 +17,9 @@ namespace Glypto
         glBindVertexArray(m_RendererID);
         vbo->Bind();
 
-        const BufferLayout& vbo_layout = vbo->GetLayout();
+        const BufferLayout &vbo_layout = vbo->GetLayout();
         int location = 0;
-        for(const BufferElement& element : vbo_layout.GetElements())
+        for (const BufferElement &element : vbo_layout.GetElements())
         {
             glEnableVertexAttribArray(location);
             glVertexAttribPointer(
@@ -28,8 +28,7 @@ namespace Glypto
                 GL_FLOAT,
                 element.normalized,
                 element.size,
-                (const void*)element.offset
-            );
+                (const void *)element.offset);
             location++;
         }
 

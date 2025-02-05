@@ -2,7 +2,7 @@
 
 namespace Glypto
 {
-    OpenGLContext::OpenGLContext(SDL_Window* window_handle)
+    OpenGLContext::OpenGLContext(SDL_Window *window_handle)
     {
         m_WindowHandle = window_handle;
 
@@ -27,7 +27,7 @@ namespace Glypto
         }
 
         // TODO - Hardcoded GLAD initialization change in future
-        if(!gladLoadGLLoader(SDL_GL_GetProcAddress))
+        if (!gladLoadGLLoader(SDL_GL_GetProcAddress))
         {
             Logger::GLYPTO_CRITICAL("Unable to load OpenGL functions!");
         }

@@ -25,15 +25,31 @@ namespace Glypto
             -0.5f, -0.5f, 0.0f,
             0.5f, -0.5f, 0.0f,
             0.0f, 0.5f, 0.0f};
+
+        const char *vertexShaderSource = "#version 330 core\n"
+                                         "layout (location = 0) in vec3 aPos;\n"
+                                         "void main()\n"
+                                         "{\n"
+                                         "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                                         "}\0";
+        const char *fragmentShaderSource = "#version 330 core\n"
+                                           "out vec4 FragColor;\n"
+                                           "void main()\n"
+                                           "{\n"
+                                           "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+                                           "}\n\0";
+
+        Shader test(vertexShaderSource, fragmentShaderSource);
+        test.Bind();
+
         BufferLayout test_layout = {{"a_pos",
                                      ShaderDataType::FLOAT3}};
-        
+
         test_vbo.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
         test_vao.reset(VertexArray::Create());
         test_vao->Bind();
         test_vbo->SetLayout(test_layout);
         test_vao->AddVertexBuffer(test_vbo);
-
 
         // TEST CODE ONLY
 

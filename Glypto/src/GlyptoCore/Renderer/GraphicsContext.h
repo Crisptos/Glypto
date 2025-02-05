@@ -7,6 +7,7 @@ namespace Glypto
     public:
         virtual void InitializeContext() = 0;
         virtual void SwapWindowBuffers() = 0;
+
     private:
     };
 }

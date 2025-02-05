@@ -13,12 +13,12 @@ namespace Glypto
         void Bind() const override;
         void Unbind() const override;
 
-        void SetLayout(const BufferLayout& layout) override
+        void SetLayout(const BufferLayout &layout) override
         {
             m_BufferLayout = layout;
         }
 
-        const BufferLayout& GetLayout() const override
+        const BufferLayout &GetLayout() const override
         {
             return m_BufferLayout;
         }
