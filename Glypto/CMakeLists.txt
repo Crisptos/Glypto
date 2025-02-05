@@ -5,29 +5,11 @@ find_package(glad CONFIG REQUIRED)
 set(VENDOR_DIR "/vendor")
 set(SRC_DIR "src")
 
+file(GLOB_RECURSE SOURCES ${SRC_DIR}/*.cpp ${SRC_DIR}/*.h)
+
 add_library(Glypto 
   SHARED 
-  ${SRC_DIR}/Defines.h 
-  ${SRC_DIR}/GlyptoCore/Core.h
-  ${SRC_DIR}/GlyptoCore/EntryPoint.h  
-  ${SRC_DIR}/GlyptoCore/Logger.h  
-  ${SRC_DIR}/GlyptoCore/Logger.cpp
-  ${SRC_DIR}/GlyptoCore/Application.h
-  ${SRC_DIR}/GlyptoCore/Application.cpp
-  ${SRC_DIR}/GlyptoCore/Event.h 
-  ${SRC_DIR}/GlyptoCore/InputManager.h 
-  ${SRC_DIR}/GlyptoCore/InputManager.cpp
-  ${SRC_DIR}/GlyptoCore/Platform.h
-  ${SRC_DIR}/GlyptoCore/Platform.cpp
-  ${SRC_DIR}/GlyptoCore/Renderer/Renderer.h
-  ${SRC_DIR}/GlyptoCore/Renderer/Renderer.cpp
-  ${SRC_DIR}/GlyptoCore/Renderer/Buffer.h
-  ${SRC_DIR}/GlyptoCore/Renderer/Buffer.cpp
-  ${SRC_DIR}/GlyptoCore/Renderer/GraphicsContext.h
-  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.h 
-  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLContext.cpp 
-  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLBuffer.h 
-  ${SRC_DIR}/GlyptoCore/Renderer/OpenGL/OpenGLBuffer.cpp 
+  ${SOURCES}
 )
 
 target_include_directories(Glypto 

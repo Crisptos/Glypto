@@ -24,15 +24,17 @@ namespace Glypto
         float vertices[] = {
             -0.5f, -0.5f, 0.0f,
             0.5f, -0.5f, 0.0f,
-            0.0f, 0.5f, 0.0f
-        };
-        uint32_t testvao;
-        glGenVertexArrays(1, &testvao);
-        glBindVertexArray(testvao);
-        test = VertexBuffer::Create(vertices, sizeof(vertices));
-        test->Bind();
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, NULL, 3 * sizeof(float), 0);
+            0.0f, 0.5f, 0.0f};
+        BufferLayout test_layout = {{"a_pos",
+                                     ShaderDataType::FLOAT3}};
+        
+        test_vbo.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+        test_vao.reset(VertexArray::Create());
+        test_vao->Bind();
+        test_vbo->SetLayout(test_layout);
+        test_vao->AddVertexBuffer(test_vbo);
+
+
         // TEST CODE ONLY
 
         // TODO - Systems will be updated based on a layer system
@@ -48,9 +50,6 @@ namespace Glypto
                 m_Platform.UpdateWindowBuffers();
             }
         }
-        // TEST CODE ONLY
-        delete test;
-        // TEST CODE ONLY
     }
 
     void Application::OnNotify(Event &event)

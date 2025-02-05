@@ -1,6 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include "GlyptoCore/Renderer/Buffer.h"
+#include "GlyptoCore/Renderer/VertexArray.h"
 
 namespace Glypto
 {

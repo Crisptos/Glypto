@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "GlyptoCore/InputManager.h"
 #include "GlyptoCore/Platform.h"
 #include "GlyptoCore/Core.h"
@@ -24,7 +25,8 @@ namespace Glypto
         uint8_t m_IsMinimized = SDL_FALSE;
         InputManager m_InputManager;
         Platform m_Platform;
-        VertexBuffer* test;
+        std::shared_ptr<VertexBuffer> test_vbo;
+        std::unique_ptr<VertexArray> test_vao;
     };
 }
 
