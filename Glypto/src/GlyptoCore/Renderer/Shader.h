@@ -1,6 +1,5 @@
 #pragma once
 #include "glad/glad.h"
-#include "GlyptoCore/Logger.h"
 #include <string>
 #include <stdint.h>
 

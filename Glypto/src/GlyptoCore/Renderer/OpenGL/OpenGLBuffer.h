@@ -37,7 +37,10 @@ namespace Glypto
         void Bind() const override;
         void Unbind() const override;
 
+        uint32_t GetCount() override;
+
     private:
+        uint32_t m_IndexCount;
         uint32_t m_RendererID;
     };
 }

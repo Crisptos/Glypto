@@ -74,11 +74,11 @@ namespace Glypto
         {
             if (!m_IsMinimized)
             {
-                glClearColor(0.23f, 0.23f, 0.23f, 1.0f);
-                glClear(GL_COLOR_BUFFER_BIT);
-                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
                 m_InputManager.ProcessInput();
                 m_InputManager.UpdatePrevState();
+                Renderer::BeginScene();
+                Renderer::SubmitScene(test_vao);
+                Renderer::EndScene();
                 m_Platform.UpdateWindowBuffers();
             }
         }

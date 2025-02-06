@@ -1,23 +1,17 @@
 #pragma once
 #include <stdint.h>
-#include "GlyptoCore/Renderer/Buffer.h"
-#include "GlyptoCore/Renderer/VertexArray.h"
-#include "GlyptoCore/Renderer/Shader.h"
+#include "GlyptoCore/Renderer/RenderCommand.h"
 
 namespace Glypto
 {
-    enum class RendererBackendAPI : uint8_t
-    {
-        NONE = 0,
-        OPENGL
-    };
 
     class Renderer
     {
     public:
-        static RendererBackendAPI GetRendererBackendAPI() { return s_RendererBackendAPI; }
+        static RendererAPI::Backend GetRendererAPIBackend();
 
-    private:
-        static RendererBackendAPI s_RendererBackendAPI;
+        static void BeginScene();
+        static void EndScene();
+        static void SubmitScene(const std::shared_ptr<VertexArray> &vao);
     };
 }

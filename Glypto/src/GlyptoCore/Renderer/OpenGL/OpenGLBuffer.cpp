@@ -27,6 +27,7 @@ namespace Glypto
 
     // IBO
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t *indices, uint32_t size)
+        : m_IndexCount(size/sizeof(uint32_t))
     {
         glCreateBuffers(1, &m_RendererID);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -46,5 +47,10 @@ namespace Glypto
     void OpenGLIndexBuffer::Unbind() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
+    uint32_t OpenGLIndexBuffer::GetCount()
+    {
+        return m_IndexCount;
     }
 }

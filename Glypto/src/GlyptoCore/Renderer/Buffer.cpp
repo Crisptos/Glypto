@@ -7,9 +7,9 @@ namespace Glypto
 {
     VertexBuffer *VertexBuffer::Create(float *vertices, uint32_t size)
     {
-        switch (Renderer::GetRendererBackendAPI())
+        switch (Renderer::GetRendererAPIBackend())
         {
-        case RendererBackendAPI::OPENGL:
+        case RendererAPI::Backend::OPENGL:
         {
 
             return new OpenGLVertexBuffer(vertices, size);
@@ -25,9 +25,9 @@ namespace Glypto
 
     IndexBuffer *IndexBuffer::Create(uint32_t *indices, uint32_t size)
     {
-        switch (Renderer::GetRendererBackendAPI())
+        switch (Renderer::GetRendererAPIBackend())
         {
-        case RendererBackendAPI::OPENGL:
+        case RendererAPI::Backend::OPENGL:
         {
 
             return new OpenGLIndexBuffer(indices, size);

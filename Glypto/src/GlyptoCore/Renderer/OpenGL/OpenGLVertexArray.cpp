@@ -38,5 +38,16 @@ namespace Glypto
     {
         glBindVertexArray(m_RendererID);
         ibo->Bind();
+        m_IndexBuffer = ibo;
+    }
+
+    std::vector<std::shared_ptr<VertexBuffer>>& OpenGLVertexArray::GetVertexBuffers()
+    {
+        return m_VertexBuffers;
+    }
+
+    std::shared_ptr<IndexBuffer>& OpenGLVertexArray::GetIndexBuffer()
+    {
+        return m_IndexBuffer;
     }
 }

@@ -6,6 +6,9 @@
 #include "GlyptoCore/Logger.h"
 #include "GlyptoCore/Event.h"
 #include "GlyptoCore/Renderer/Renderer.h"
+#include "GlyptoCore/Renderer/Buffer.h"
+#include "GlyptoCore/Renderer/VertexArray.h"
+#include "GlyptoCore/Renderer/Shader.h"
 
 namespace Glypto
 {
@@ -27,7 +30,7 @@ namespace Glypto
         Platform m_Platform;
         std::shared_ptr<VertexBuffer> test_vbo;
         std::shared_ptr<IndexBuffer> test_ibo;
-        std::unique_ptr<VertexArray> test_vao;
+        std::shared_ptr<VertexArray> test_vao;
     };
 }
 

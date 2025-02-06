@@ -1,4 +1,5 @@
 #include "GlyptoCore/Renderer/Shader.h"
+#include "GlyptoCore/Logger.h"
 
 namespace Glypto
 {

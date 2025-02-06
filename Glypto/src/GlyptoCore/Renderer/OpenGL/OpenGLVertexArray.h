@@ -16,6 +16,8 @@ namespace Glypto
 
         void AddVertexBuffer(const std::shared_ptr<VertexBuffer> &vbo) override;
         void SetIndexBuffer(const std::shared_ptr<IndexBuffer> &ibo) override;
+        std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() override;
+        std::shared_ptr<IndexBuffer>& GetIndexBuffer() override;
 
     private:
         uint32_t m_RendererID;
