@@ -9,6 +9,7 @@
 #include "GlyptoCore/Renderer/Buffer.h"
 #include "GlyptoCore/Renderer/VertexArray.h"
 #include "GlyptoCore/Renderer/Shader.h"
+#include "GlyptoCore/Renderer/OrthoCamera.h"
 
 namespace Glypto
 {
@@ -31,6 +32,7 @@ namespace Glypto
         std::shared_ptr<VertexBuffer> test_vbo;
         std::shared_ptr<IndexBuffer> test_ibo;
         std::shared_ptr<VertexArray> test_vao;
+        OrthoCamera test_camera;
     };
 }
 

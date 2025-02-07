@@ -32,14 +32,14 @@ namespace Glypto
         void Bind() const { glUseProgram(m_RendererID); }
         void Unbind() const { glUseProgram(0); }
 
-        void inline UploadUniformBool(std::string &name, uint8_t &value) const { glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value); }
-        void inline UploadUniformInt(std::string &name, uint32_t &value) const { glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value); }
-        void inline UploadUniformFloat(std::string &name, float &value) const { glUniform1f(glGetUniformLocation(m_RendererID, name.c_str()), value); }
-        void inline UploadUniformFloat2(std::string &name, glm::vec2& value) const { glUniform2fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
-        void inline UploadUniformFloat3(std::string &name, glm::vec3& value) const { glUniform3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
-        void inline UploadUniformFloat4(std::string &name, glm::vec4& value) const { glUniform4fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
-        void inline UploadUniformMat3(std::string &name, glm::mat3& value) const { glUniformMatrix3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value)); }
-        void inline UploadUniformMat4(std::string &name, glm::mat4& value) const { glUniformMatrix4fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value)); }
+        void inline UploadUniformBool(std::string name, const uint8_t &value) const { glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value); }
+        void inline UploadUniformInt(std::string name, const uint32_t &value) const { glUniform1i(glGetUniformLocation(m_RendererID, name.c_str()), value); }
+        void inline UploadUniformFloat(std::string name, const float &value) const { glUniform1f(glGetUniformLocation(m_RendererID, name.c_str()), value); }
+        void inline UploadUniformFloat2(std::string name, const glm::vec2& value) const { glUniform2fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
+        void inline UploadUniformFloat3(std::string name, const glm::vec3& value) const { glUniform3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
+        void inline UploadUniformFloat4(std::string name, const glm::vec4& value) const { glUniform4fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, glm::value_ptr(value)); }
+        void inline UploadUniformMat3(std::string name, const glm::mat3& value) const { glUniformMatrix3fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value)); }
+        void inline UploadUniformMat4(std::string name, const glm::mat4& value) const { glUniformMatrix4fv(glGetUniformLocation(m_RendererID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value)); }
         // TODO - Add vec and mats
 
     private:

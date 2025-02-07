@@ -3,6 +3,7 @@
 namespace Glypto
 {
     Application::Application(const char *name, uint16_t width, uint16_t height)
+        : test_camera(0, 800, 0, 600, 0.1f, 10.0f)
     {
         // Subsystem initialization
         m_Platform.InitializePlatform(name, width, height);
@@ -36,10 +37,11 @@ namespace Glypto
         const char *vertexShaderSource = "#version 330 core\n"
                                          "layout (location = 0) in vec3 a_pos;\n"
                                          "layout (location = 1) in vec3 a_color;\n"
+                                         "uniform mat4 u_proj_view;\n"
                                          "out vec4 vert_color;\n"
                                          "void main()\n"
                                          "{\n"
-                                         "   gl_Position = vec4(a_pos.x, a_pos.y, a_pos.z, 1.0);\n"
+                                         "   gl_Position = u_proj_view * vec4(a_pos.x, a_pos.y, a_pos.z, 1.0);\n"
                                          "   vert_color = vec4(a_color, 1.0f);\n"
                                          "}\0";
 
@@ -76,6 +78,8 @@ namespace Glypto
             {
                 m_InputManager.ProcessInput();
                 m_InputManager.UpdatePrevState();
+                test.Bind();
+                test.UploadUniformMat4("u_proj_view", test_camera.GetViewProjectionMatrix());
                 Renderer::BeginScene();
                 Renderer::SubmitScene(test_vao);
                 Renderer::EndScene();
