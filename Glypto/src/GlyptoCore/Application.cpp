@@ -46,7 +46,6 @@ namespace Glypto
         const char *vertexShaderSource = "#version 330 core\n"
                                          "layout (location = 0) in vec3 a_pos;\n"
                                          "layout (location = 1) in vec3 a_color;\n"
-                                         "uniform mat4 u_proj_view;\n"
                                          "out vec4 vert_color;\n"
                                          "uniform mat4 u_proj_view;\n"
                                          "void main()\n"
