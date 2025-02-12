@@ -9,6 +9,7 @@
 #include "GlyptoCore/Renderer/Buffer.h"
 #include "GlyptoCore/Renderer/VertexArray.h"
 #include "GlyptoCore/Renderer/Shader.h"
+#include "GlyptoCore/Renderer/OrthoCamera.h"
 
 namespace Glypto
 {
@@ -28,6 +29,7 @@ namespace Glypto
         uint8_t m_IsMinimized = SDL_FALSE;
         InputManager m_InputManager;
         Platform m_Platform;
+        OrthoCamera test_cam;
         std::shared_ptr<VertexBuffer> test_vbo;
         std::shared_ptr<IndexBuffer> test_ibo;
         std::shared_ptr<VertexArray> test_vao;
