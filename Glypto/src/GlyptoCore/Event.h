@@ -3,7 +3,7 @@
 
 namespace Glypto
 {
-    enum class EventType : uint8_t
+    enum class GLYPTO_API EventType : uint8_t
     {
         EVENT_APPLICATION_QUIT = 0x0,
         EVENT_APPLICATION_RESIZE_WINDOW,
@@ -14,7 +14,7 @@ namespace Glypto
         EVENT_INPUT_MOUSE_MOTION
     };
 
-    typedef struct Event
+    typedef struct GLYPTO_API Event
     {
         EventType type;
         uint8_t handled = 0;
@@ -26,7 +26,7 @@ namespace Glypto
         };
     } Event;
 
-    class EventObserver
+    class GLYPTO_API EventObserver
     {
     public:
         virtual ~EventObserver() {};

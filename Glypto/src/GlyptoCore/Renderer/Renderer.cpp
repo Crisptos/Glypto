@@ -12,8 +12,10 @@ namespace Glypto
     {
     }
 
-    void Renderer::SubmitScene(const std::shared_ptr<VertexArray> &vao)
+    void Renderer::SubmitScene(const std::shared_ptr<VertexArray> &vao, const Shader& shader, OrthoCamera& camera)
     {
+        shader.Bind();
+        shader.UploadUniformMat4("u_proj_view", camera.GetViewProjMat());
         RenderCommand::Clear();
         RenderCommand::IndexedDraw(vao);
     }

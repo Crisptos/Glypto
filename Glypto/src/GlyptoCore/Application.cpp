@@ -62,8 +62,7 @@ namespace Glypto
                                            "   frag_color = vert_color;\n"
                                            "}\n\0";
 
-        Shader test(vertexShaderSource, fragmentShaderSource);
-        test.Bind();
+        Shader test_shader(vertexShaderSource, fragmentShaderSource);
 
         BufferLayout test_layout = {
             {"a_pos", ShaderDataType::FLOAT3},
@@ -87,61 +86,11 @@ namespace Glypto
             {
                 m_InputManager.ProcessInput();
                 m_InputManager.UpdatePrevState();
-                test.UploadUniformMat4("u_proj_view", test_cam.GetViewProjMat());
                 Renderer::BeginScene();
-                Renderer::SubmitScene(test_vao);
+                Renderer::SubmitScene(test_vao, test_shader, test_cam);
                 Renderer::EndScene();
                 m_Platform.UpdateWindowBuffers();
             }
-        }
-    }
-
-    void Application::OnNotify(Event &event)
-    {
-        switch (event.type)
-        {
-        case EventType::EVENT_APPLICATION_QUIT:
-        {
-            Logger::GLYPTO_INFO("Quitting application...");
-            m_IsRunning = SDL_FALSE;
-            event.handled = SDL_TRUE;
-            break;
-        }
-
-        case EventType::EVENT_INPUT_KEYDOWN:
-        {
-            Logger::GLYPTO_INFO("Key %c was pressed...", event.keycode);
-            event.handled = SDL_TRUE;
-            break;
-        }
-
-        case EventType::EVENT_INPUT_KEYUP:
-        {
-            Logger::GLYPTO_INFO("Key %c was released...", event.keycode);
-            event.handled = SDL_TRUE;
-            break;
-        }
-
-        case EventType::EVENT_INPUT_MOUSE_BTNDOWN:
-        {
-            Logger::GLYPTO_INFO("Mouse Btn %d was pressed...", event.mouse_btn);
-            event.handled = SDL_TRUE;
-            break;
-        }
-
-        case EventType::EVENT_INPUT_MOUSE_BTNUP:
-        {
-            Logger::GLYPTO_INFO("Mouse Btn %d was released...", event.mouse_btn);
-            event.handled = SDL_TRUE;
-            break;
-        }
-
-        case EventType::EVENT_INPUT_MOUSE_MOTION:
-        {
-            Logger::GLYPTO_INFO("Mouse Pos is (X: %d, Y: %d)...", event.mouse_pos[0], event.mouse_pos[1]);
-            event.handled = SDL_TRUE;
-            break;
-        }
         }
     }
 }

@@ -1,10 +1,11 @@
 #pragma once
 #include <stdint.h>
 #include "GlyptoCore/Renderer/RenderCommand.h"
+#include "GlyptoCore/Renderer/OrthoCamera.h"
+#include "GlyptoCore/Renderer/Shader.h"
 
 namespace Glypto
 {
-
     class Renderer
     {
     public:
@@ -12,6 +13,8 @@ namespace Glypto
 
         static void BeginScene();
         static void EndScene();
-        static void SubmitScene(const std::shared_ptr<VertexArray> &vao);
+
+        // TODO - Proper scene data
+        static void SubmitScene(const std::shared_ptr<VertexArray> &vao, const Shader &shader, OrthoCamera& camera);
     };
 }
